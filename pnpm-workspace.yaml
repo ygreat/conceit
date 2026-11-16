@@ -1,0 +1,3 @@
+# core-js only prints a donation message on install; it does not need to run.
+allowBuilds:
+  core-js: false
