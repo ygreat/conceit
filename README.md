@@ -28,6 +28,32 @@
 
 Conceit is a lightweight desktop app (Tauri 2) for collecting and arranging visual references. Drop in images, videos, notes, colors and drawings, connect them with lines, arrange them in a click, and ask an AI to help build the board.
 
+## See it in action
+
+### Plan a board with AI
+
+Describe the project in one prompt and the AI agent drafts a whole mood board plan from scratch: a creative direction, a palette and the reference slots to fill.
+
+<p align="center">
+  <img src="docs/media/conceit-planwithai.gif" alt="An AI agent building a mood board plan from a single prompt" width="800">
+</p>
+
+### You choose the mood
+
+The AI helps you gather your thoughts. It doesn't replace your taste. Instead of picking images for you, it leaves ghost reference cards that describe what to look for, with one-click searches on Pinterest, Unsplash and Google. The references that end up on the board are the ones you chose.
+
+<p align="center">
+  <img src="docs/media/conceit-creativedirection.gif" alt="A ghost reference card opening Pinterest, Unsplash and Google searches" width="800">
+</p>
+
+### Arrange in a click
+
+Tidy a messy board into Grid, Masonry, Bento, Flow or Scatter layouts, animated and undoable in one step.
+
+<p align="center">
+  <img src="docs/media/conceit-arrangelayout.gif" alt="Cards rearranging between layouts" width="800">
+</p>
+
 ## Features
 
 - **Boards are files you own.** Each board is a single `.conceit` file (SQLite), autosaved, with media stored inside so it opens complete on any Mac.
