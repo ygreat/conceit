@@ -1,10 +1,9 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { FlaskConical, LayoutDashboard, Link, Palette, PenLine, Plus, Redo2, Sparkles, StickyNote, Undo2 } from "lucide-react";
+import { LayoutDashboard, Link, Palette, PenLine, Plus, Redo2, Sparkles, StickyNote, Undo2 } from "lucide-react";
 import { ExportMenu } from "./ExportMenu";
 import { ArrangeMenu } from "./ArrangeMenu";
 import type { LayoutKind } from "./layouts";
 import { undoManager } from "./doc";
-import { codecReport } from "./media";
 import { useSettings } from "../settings";
 import { SettingsMenu } from "../SettingsMenu";
 
@@ -66,7 +65,6 @@ const ICON = { size: 17, strokeWidth: 1.75, "aria-hidden": true } as const;
 
 export function Toolbar({ objectCount, onAddNote, onAddColor, onAddUrl, onStress, onClear, drawMode, onToggleDraw, onArrange, aiOpen, onToggleAi }: Props) {
   const [url, setUrl] = useState("");
-  const [showDiag, setShowDiag] = useState(false);
   const settings = useSettings();
   const fps = useFps(settings.stats);
   const { canUndo, canRedo } = useHistory();
@@ -142,16 +140,6 @@ export function Toolbar({ objectCount, onAddNote, onAddColor, onAddUrl, onStress
         >
           <Redo2 {...ICON} />
         </button>
-        <span className="cn-sep" />
-        <button
-          className={`cn-icon-btn${showDiag ? " on" : ""}`}
-          onClick={() => setShowDiag((s) => !s)}
-          aria-expanded={showDiag}
-          title="Spike tools"
-          aria-label="Spike tools"
-        >
-          <FlaskConical {...ICON} />
-        </button>
       </div>
 
       <div className="cn-corner">
@@ -162,38 +150,8 @@ export function Toolbar({ objectCount, onAddNote, onAddColor, onAddUrl, onStress
           </div>
         )}
         <ExportMenu />
-        <SettingsMenu />
+        <SettingsMenu onStress={onStress} onClear={onClear} />
       </div>
-
-      {showDiag && (
-        <div className="cn-diag">
-          <h3>Stress test</h3>
-          <p>Target: 1,000 objects pan and zoom at 60 fps (PRD Phase 0 gate).</p>
-          <div className="cn-row">
-            <button onClick={() => onStress(250)}>+250</button>
-            <button onClick={() => onStress(1000)}>+1,000</button>
-            <button className="cn-danger" onClick={onClear}>
-              Clear board
-            </button>
-          </div>
-          <h3>Webview codecs</h3>
-          <table>
-            <tbody>
-              {codecReport().map((c) => (
-                <tr key={c.label}>
-                  <td>{c.label}</td>
-                  <td className={c.result === "no" ? "cn-warn" : "cn-ok"}>{c.result}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <p className="cn-hint">
-            Paste a URL, image or text anywhere, or drop image and video files from
-            Finder. ⌘Z / ⇧⌘Z undo and redo. Drag from a card's edge dot to connect;
-            click a line to style it.
-          </p>
-        </div>
-      )}
     </>
   );
 }

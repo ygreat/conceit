@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Monitor, Moon, Settings as SettingsIcon, Sun } from "lucide-react";
 import { updateSettings, useSettings, type Settings, type Theme } from "./settings";
+import { codecReport } from "./board/media";
 
 const THEMES: { value: Theme; label: string; icon: ReactNode }[] = [
   { value: "system", label: "System", icon: <Monitor size={14} aria-hidden /> },
@@ -30,7 +31,12 @@ function Switch({ checked, onChange, label }: { checked: boolean; onChange: (v: 
   );
 }
 
-export function SettingsMenu() {
+interface Props {
+  onStress: (count: number) => void;
+  onClear: () => void;
+}
+
+export function SettingsMenu({ onStress, onClear }: Props) {
   const s = useSettings();
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLDivElement>(null);
@@ -96,6 +102,34 @@ export function SettingsMenu() {
               </li>
             ))}
           </ul>
+
+          <h3>Debug</h3>
+          <div className="cn-debug">
+            <div className="cn-debug-label">
+              <span>Stress test</span>
+              <small>Target: 1,000 objects pan and zoom at 60 fps</small>
+            </div>
+            <div className="cn-row">
+              <button onClick={() => onStress(250)}>+250</button>
+              <button onClick={() => onStress(1000)}>+1,000</button>
+              <button className="cn-danger" onClick={onClear}>
+                Clear board
+              </button>
+            </div>
+            <details>
+              <summary>Webview codecs</summary>
+              <table>
+                <tbody>
+                  {codecReport().map((c) => (
+                    <tr key={c.label}>
+                      <td>{c.label}</td>
+                      <td className={c.result === "no" ? "cn-warn" : "cn-ok"}>{c.result}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </details>
+          </div>
         </div>
       )}
     </div>

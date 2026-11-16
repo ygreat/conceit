@@ -419,40 +419,36 @@ input:focus-visible {
   border-radius: 8px;
 }
 
-.cn-diag {
-  position: absolute;
-  top: 64px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 340px;
-  padding: 12px 14px;
-  background: var(--cn-surface);
-  border: 1px solid var(--cn-border);
-  border-radius: 12px;
-  box-shadow: var(--cn-shadow);
-  z-index: 10;
-  font-size: 13px;
+.cn-debug {
+  padding: 7px 0 4px;
+  border-top: 1px solid var(--cn-surface-2);
 }
-.cn-diag h3 {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--cn-muted);
-  margin: 6px 0;
-}
-.cn-diag p {
-  margin: 4px 0 8px;
-}
-.cn-diag table {
-  width: 100%;
-  border-collapse: collapse;
+.cn-debug-label {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
   margin-bottom: 8px;
 }
-.cn-diag td {
+.cn-debug-label small {
+  color: var(--cn-muted);
+  font-size: 11.5px;
+}
+.cn-debug summary {
+  cursor: pointer;
+  padding: 4px 0;
+  color: var(--cn-muted);
+  font-size: 12px;
+}
+.cn-debug table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 4px 0 6px;
+}
+.cn-debug td {
   padding: 3px 0;
   border-bottom: 1px solid var(--cn-surface-2);
 }
-.cn-diag td:last-child {
+.cn-debug td:last-child {
   text-align: right;
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
   font-size: 12px;
@@ -461,10 +457,6 @@ input:focus-visible {
   display: flex;
   gap: 6px;
   margin-bottom: 10px;
-}
-.cn-hint {
-  color: var(--cn-muted);
-  font-size: 12px;
 }
 .cn-warn {
   color: var(--cn-warn);
@@ -758,6 +750,8 @@ input:focus-visible {
   border-radius: 12px;
   box-shadow: var(--cn-shadow);
   font-size: 13px;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
 }
 .cn-settings-panel h3 {
   margin: 4px 0 8px;
@@ -780,6 +774,9 @@ input:focus-visible {
   gap: 5px;
   padding: 6px 4px;
   font-size: 12.5px;
+}
+.cn-toggles + h3 {
+  margin-top: 12px;
 }
 .cn-toggles {
   list-style: none;
