@@ -10,6 +10,7 @@
   <img src="https://img.shields.io/badge/status-alpha-orange" alt="Status: alpha">
   <img src="https://img.shields.io/badge/platform-macOS-lightgrey?logo=apple" alt="Platform: macOS">
   <a href="https://github.com/ygreat/conceit/commits/main"><img src="https://img.shields.io/github/last-commit/ygreat/conceit" alt="Last commit"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/ygreat/conceit" alt="License: MIT"></a>
 </p>
 
 <p align="center">
@@ -49,3 +50,7 @@ cd src-tauri && cargo test
 ```
 
 Built with Tauri 2, React 19, React Flow, Yjs and TypeScript.
+
+## License
+
+[MIT](LICENSE) © ygreat. Third-party credits are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
